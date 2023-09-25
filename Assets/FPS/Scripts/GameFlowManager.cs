@@ -34,6 +34,8 @@ public class GameFlowManager : MonoBehaviour
     float m_TimeLoadEndGameScene;
     string m_SceneToLoad;
 
+    public string nextLevel;
+
     void Start()
     {
         m_Player = FindObjectOfType<PlayerCharacterController>();
@@ -84,6 +86,8 @@ public class GameFlowManager : MonoBehaviour
         if (win)
         {
             m_SceneToLoad = winSceneName;
+
+            PlayerPrefs.SetString("sceneName", nextLevel);
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay + delayBeforeFadeToBlack;
 
             // play a sound on win

@@ -19,4 +19,9 @@ public class LoadSceneButton : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(PlayerPrefs.GetString("sceneName"));
+    }
 }
