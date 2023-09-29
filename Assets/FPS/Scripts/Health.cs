@@ -80,6 +80,7 @@ public class Health : MonoBehaviour
         // call OnDie action
         if (currentHealth <= 0f)
         {
+            Debug.Log("call OnDie action: " + onDie);
             if (onDie != null)
             {
                 m_IsDead = true;
