@@ -197,8 +197,6 @@ public class EnemyController : MonoBehaviour
     {
         EnsureIsWithinLevelBounds();
 
-        //Debug.Log("Test" + m_SelfColliders);
-        //Debug.Log("Test" + m_Actor);
         m_DetectionModule.HandleTargetDetection(m_Actor, m_SelfColliders);
 
         Color currentColor = onHitBodyGradient.Evaluate((Time.time - m_LastTimeDamaged) / flashOnHitDuration);

@@ -24,4 +24,18 @@ public class ProjectileBase : MonoBehaviour
             onShoot.Invoke();
         }
     }
+
+    public void Shoot(RobotMove controller)
+    {
+        owner = controller.owner;
+        initialPosition = transform.position;
+        initialDirection = transform.forward;
+        inheritedMuzzleVelocity = controller.muzzleWorldVelocity;
+        initialCharge = controller.currentCharge;
+
+        if (onShoot != null)
+        {
+            onShoot.Invoke();
+        }
+    }
 }
