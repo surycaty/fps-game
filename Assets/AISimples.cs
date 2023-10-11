@@ -21,6 +21,10 @@ public class AISimples : MonoBehaviour
     
     public estadoDaAI _estadoAI = estadoDaAI.parado;
 
+    public List<Transform> pathNodes = new List<Transform>();
+    public float speedMoveEnemy = 2f;
+    private Vector3 nextPosition;
+
     void Start()
     {
         _navMesh = GetComponent<NavMeshAgent>();
@@ -29,6 +33,8 @@ public class AISimples : MonoBehaviour
         _estadoAI = estadoDaAI.parado;
         posicInicialDaAI = transform.position;
         timerProcura = 0;
+
+        nextPosition = pathNodes[0].position;
     }
 
 
@@ -39,16 +45,31 @@ public class AISimples : MonoBehaviour
             switch (_estadoAI)
             {
                 case estadoDaAI.parado:
-                    //_navMesh.SetDestination(posicInicialDaAI);
+
+                    _navMesh.SetDestination(nextPosition);
                     if (_cabeca.inimigosVisiveis.Count > 0)
                     {
                         alvo = _cabeca.inimigosVisiveis[0];
                         ultimaPosicConhecida = alvo.position;
                         _estadoAI = estadoDaAI.seguindo;
+                    } else
+                    {
+                        if (transform.position.x == pathNodes[0].position.x
+                            && transform.position.z == pathNodes[0].position.z)
+                        {
+                            nextPosition = pathNodes[1].position;
+                        }
+
+                        if (transform.position.x == pathNodes[1].position.x
+                            && transform.position.z == pathNodes[1].position.z)
+                        {
+                            nextPosition = pathNodes[0].position;
+                        }
+
+                        transform.position = Vector3.MoveTowards(transform.position, nextPosition, speedMoveEnemy * Time.deltaTime);
                     }
                     break;
                 case estadoDaAI.seguindo:
-                    Debug.Log("Seguindo: " + alvo);
                     _navMesh.SetDestination(alvo.position);
                     if (!_cabeca.inimigosVisiveis.Contains(alvo))
                     {

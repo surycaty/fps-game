@@ -50,7 +50,7 @@ public class RobotMove : MonoBehaviour
 
     public AISimples aISimples;
 
-    public GameObject patrolPath;
+    //public GameObject patrolPath;
 
     // Start is called before the first frame update
     void Start()
@@ -66,14 +66,6 @@ public class RobotMove : MonoBehaviour
         owner = gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log("ESTADO: " + aISimples._estadoAI);
-        if(AISimples.estadoDaAI.seguindo.Equals(aISimples._estadoAI) && robotEnemy.isActiveAndEnabled)
-            robotEnemy.SetDestination(player.position);
-    }
-
     private void FixedUpdate()
     {
         if (health.currentHealth <= 0 )
@@ -82,7 +74,7 @@ public class RobotMove : MonoBehaviour
         }
 
         if (AISimples.estadoDaAI.seguindo.Equals(aISimples._estadoAI) && 
-            robotEnemy.isActiveAndEnabled && robotEnemy.remainingDistance <= robotEnemy.stoppingDistance)
+            robotEnemy.remainingDistance <= robotEnemy.stoppingDistance)
         {
             animator.SetBool("attack", true);
             animator.SetBool("walk", false);
@@ -102,13 +94,6 @@ public class RobotMove : MonoBehaviour
         } 
         else
         {
-            if(AISimples.estadoDaAI.parado.Equals(aISimples._estadoAI))
-            {
-                patrolPath.SetActive(true);
-            } else
-            {
-                patrolPath.SetActive(false);
-            }
             animator.SetBool("attack", false);
             animator.SetBool("walk", true);
         }
