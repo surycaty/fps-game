@@ -11,7 +11,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/suryc/unityProject/FPS Game/build-web;/Users/mikachu/repos/IET REPOS/buildsfortesting;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/User/workspace_unity/fps-game/build-web;C:/Users/suryc/unityProject/FPS Game/build-web;/Users/mikachu/repos/IET REPOS/buildsfortesting;;;;;;;\"}"
             },
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",

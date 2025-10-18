@@ -17,7 +17,10 @@ public class LoadSceneButton : MonoBehaviour
 
     public void LoadTargetScene()
     {
-        SceneManager.LoadScene(sceneName);
+        //Comentado para pegar sempre a ultimafase jogada, o proxima só muda quando carregar o WinScene
+        //SceneManager.LoadScene(sceneName);
+
+        SceneManager.LoadScene(PlayerPrefs.GetString("sceneName"));
     }
 
     public void LoadNextScene()
